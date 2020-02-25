@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="Web site made to create css for border-radius"/>
+
+    <title> Css Border Radius Code Creator</title>
+<style>
+
+.css-result-background {
+    background-color: blueviolet;
+    width: 350px;
+    height: 350px;
+
+}
+
+.css-result {
+    margin: 20px 20px;
+    width: inherit;
+}
+
+.inline {
+    display: flex;
+}
+
+.control {
+    margin-left: 20px;
+}
+
+.model {
+    background-color: mediumblue;
+    margin: 20px 32px;
+}
+
+.model-input-box {
+    height:50px;
+    width: 100px;
+}
+
+.model-circle {    
+    height:200px;
+    width: 200px;
+}
+
+#borderRadius{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+</style>
+</head>
+<body>
+    <h2>Border Radius Generator</h1>
+    <div class="inline">
+        <div class="css-result-background inline">
+            <textarea class="css-result">
+            </textarea>
+        </div>
+
+        <div class="control">
+            <label for="borderRadiusControl">Adjust border radius</label>
+            <div class="borderRadiusControl inline">
+                <button id="decrement" type="range" onclick="decrement();">-</button>
+                <div id="borderRadius">0</div>px
+                <button id="increment" onclick="increment();">+</button>
+            </div>
+            <div class="model model-input-box"></div>
+            <div class="model model-circle"></div>
+        </div>
+
+    </div>
+</body>
+</html>
