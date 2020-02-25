@@ -16,14 +16,14 @@
         <div class="css-result-background inline">
             <textarea id="cssResult" class="css-result">
             </textarea>
+            <button id="copyButton" onclick="copyCss()">Copy CSS to clipboard</button>
         </div>
 
         <div class="control">
             <label for="borderRadiusControl">Adjust border radius</label>
             <div class="borderRadiusControl inline">
                 <input id="changeBorderRadius" type="range" min="0" max="130" value="0" onchange="changeBorderRadius(this.value);">
-            </div>
-            
+            </div>            
             <div id="circleModel" class="model model-circle"></div>
         </div>
 
@@ -46,6 +46,12 @@
         setCssResult();
     }
 
+    function copyCss() {
+        var css = document.getElementById("cssResult");
+        css.select();
+        css.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
 </script>
 
 </body>
