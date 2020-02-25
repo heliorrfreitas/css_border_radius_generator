@@ -45,7 +45,7 @@
     width: 200px;
 }
 
-#borderRadius{
+#borderRadiusDisplay{
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -56,21 +56,39 @@
     <h2>Border Radius Generator</h1>
     <div class="inline">
         <div class="css-result-background inline">
-            <textarea class="css-result">
+            <textarea id="cssResult" class="css-result">
             </textarea>
         </div>
 
         <div class="control">
             <label for="borderRadiusControl">Adjust border radius</label>
             <div class="borderRadiusControl inline">
-                <button id="decrement" type="range" onclick="decrement();">-</button>
-                <div id="borderRadius">0</div>px
-                <button id="increment" onclick="increment();">+</button>
+                <input id="changeBorderRadius" type="range" min="0" max="130" value="0" onchange="changeBorderRadius(this.value);">
             </div>
-            <div class="model model-input-box"></div>
-            <div class="model model-circle"></div>
+            
+            <div id="circleModel" class="model model-circle"></div>
         </div>
 
     </div>
+
+<script>
+    var borderRadius = 0;
+
+    function setCircleModelBorderRadius(){        
+        document.getElementById('circleModel').style.borderRadius = (borderRadius) + "px";
+    }
+
+    function setCssResult(){
+        document.getElementById('cssResult').value = "border-radius: " + borderRadius + "px;";
+    }
+
+    function changeBorderRadius(value){
+        borderRadius = value;        
+        setCircleModelBorderRadius();
+        setCssResult();
+    }
+
+</script>
+
 </body>
 </html>
