@@ -7,12 +7,12 @@
 
     <meta name="description" content="Web site made to create css for border-radius"/>
     <link href="style.css" rel="stylesheet">
-    <title> Css Border Radius Code Creator</title>
+    <title>Border Radius Generator</title>
 
 </head>
 <body>
     <h2>Border Radius Generator</h1>
-    <div class="inline">
+    <div class="column">
         <div class="css-result-background inline">
             <textarea id="cssResult" class="css-result">
             </textarea>
@@ -20,34 +20,63 @@
         </div>
 
         <div class="control">
-            <label for="borderRadiusControl">Adjust border radius</label>
+            <h4>Adjust border radius</h4>
+            
             <div class="borderRadiusControl inline">
-                <input id="changeBorderRadius" type="range" min="0" max="130" value="0" onchange="changeBorderRadius(this.value);">
-            </div>            
+                <label for="borderRadiusTopLeft">Border Radius Top Left:</label>
+                <input id="borderRadiusTopLeft" type="range" min="0" max="400" value="0" onchange="changeBorderRadius();">
+            </div>
+
+            <div class="borderRadiusControl inline">
+                <label for="borderRadiusTopRight">Border Radius Top Right:</label>
+                <input id="borderRadiusTopRight" type="range" min="0" max="400" value="0" onchange="changeBorderRadius();">
+            </div>
+
+            <div class="borderRadiusControl inline">
+                <label for="borderRadiusBottomRight">Border Radius Bottom Right:</label>
+                <input id="borderRadiusBottomRight" type="range" min="0" max="400" value="0" onchange="changeBorderRadius();">
+            </div>
+
+            <div class="borderRadiusControl inline">
+                <label for="borderRadiusBottomLeft">Border Radius Bottom Left:</label>
+                <input id="borderRadiusBottomLeft" type="range" min="0" max="400" value="0" onchange="changeBorderRadius();">
+            </div>
+
+
             <div id="circleModel" class="model model-circle"></div>
         </div>
 
     </div>
 
 <script>
-    var borderRadius = 0;
+    var borderRadius = "0px";
+
+
+    function setBorderRadius(){
+        let topLeft = document.getElementById('borderRadiusTopLeft').value;
+        let topRight = document.getElementById('borderRadiusTopRight').value;
+        let bottomRight = document.getElementById('borderRadiusBottomRight').value;
+        let bottomLeft = document.getElementById('borderRadiusBottomLeft').value;
+
+        borderRadius = topLeft + "px " + topRight + "px " + bottomRight + "px " + bottomLeft + "px" ;
+    }
 
     function setCircleModelBorderRadius(){        
-        document.getElementById('circleModel').style.borderRadius = (borderRadius) + "px";
+        document.getElementById('circleModel').style.borderRadius = borderRadius;
     }
 
     function setCssResult(){
-        document.getElementById('cssResult').value = "border-radius: " + borderRadius + "px;";
+        document.getElementById('cssResult').value = "border-radius: " + borderRadius;
     }
 
-    function changeBorderRadius(value){
-        borderRadius = value;        
+    function changeBorderRadius(){
+        setBorderRadius();     
         setCircleModelBorderRadius();
         setCssResult();
     }
 
     function copyCss() {
-        var css = document.getElementById("cssResult");
+        let css = document.getElementById("cssResult");
         css.select();
         css.setSelectionRange(0, 99999);
         document.execCommand("copy");
