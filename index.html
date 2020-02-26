@@ -7,7 +7,8 @@
 
     <meta name="description" content="Web site made to create css for border-radius"/>
     <link href="style.css" rel="stylesheet">
-    <title>Border Radius Generator</title>
+    <script src="index.js" type="application/javascript"></script>
+    <title>CSS Border Radius Generator</title>
 
 </head>
 <body>
@@ -42,46 +43,8 @@
                 <input id="borderRadiusBottomLeft" type="range" min="0" max="400" value="0" onchange="changeBorderRadius();">
             </div>
 
-
             <div id="circleModel" class="model model-circle"></div>
         </div>
-
     </div>
-
-<script>
-    var borderRadius = "0px";
-
-
-    function setBorderRadius(){
-        let topLeft = document.getElementById('borderRadiusTopLeft').value;
-        let topRight = document.getElementById('borderRadiusTopRight').value;
-        let bottomRight = document.getElementById('borderRadiusBottomRight').value;
-        let bottomLeft = document.getElementById('borderRadiusBottomLeft').value;
-
-        borderRadius = topLeft + "px " + topRight + "px " + bottomRight + "px " + bottomLeft + "px" ;
-    }
-
-    function setCircleModelBorderRadius(){        
-        document.getElementById('circleModel').style.borderRadius = borderRadius;
-    }
-
-    function setCssResult(){
-        document.getElementById('cssResult').value = "border-radius: " + borderRadius;
-    }
-
-    function changeBorderRadius(){
-        setBorderRadius();     
-        setCircleModelBorderRadius();
-        setCssResult();
-    }
-
-    function copyCss() {
-        let css = document.getElementById("cssResult");
-        css.select();
-        css.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-    }
-</script>
-
 </body>
 </html>
